@@ -131,7 +131,7 @@ func (cc *Client) readData(buff []byte) bool {
 			cc.conn.Close()
 
 			if cc.status != Closing || cc.status == Closed {
-				go cc.reconnect()
+				go cc.Reconnect()
 			}
 			return false
 		}
@@ -152,7 +152,7 @@ func (cc *Client) readData(buff []byte) bool {
 
 }
 
-func (cc *Client) reconnect() {
+func (cc *Client) Reconnect() {
 
 	cc.status = ReConnecting
 	cc.recieved <- &Message{Status: cc.status.String(), MsgType: -1}
@@ -258,8 +258,8 @@ func (cc *Client) write() {
 	}
 }
 
-// getStatus - get the current status of the connection
-func (cc *Client) getStatus() Status {
+// GetStatus - get the current status of the connection
+func (cc *Client) GetStatus() Status {
 
 	return cc.status
 

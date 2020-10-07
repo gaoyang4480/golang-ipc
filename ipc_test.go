@@ -348,14 +348,14 @@ func TestStatus(t *testing.T) {
 		status: NotConnected,
 	}
 
-	cc.getStatus()
+	cc.GetStatus()
 	cc.Status()
 
 	cc2 := &Client{
 		status: 9,
 	}
 
-	cc2.getStatus()
+	cc2.GetStatus()
 	cc2.Status()
 
 }

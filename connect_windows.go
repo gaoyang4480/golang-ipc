@@ -2,10 +2,9 @@ package ipc
 
 import (
 	"errors"
+	winio "github.com/Microsoft/go-winio"
 	"strings"
 	"time"
-
-	"github.com/microsoft/go-winio-master"
 )
 
 // Server function

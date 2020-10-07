@@ -22,10 +22,11 @@ func StartClient(ipcName string, config *ClientConfig) (*Client, error) {
 	}
 
 	cc := &Client{
-		Name:     ipcName,
-		status:   NotConnected,
-		recieved: make(chan *Message),
-		toWrite:  make(chan *Message),
+		Name:       ipcName,
+		status:     NotConnected,
+		recieved:   make(chan *Message),
+		toWrite:    make(chan *Message),
+		maxMsgSize: maxMsgSize,
 	}
 
 	if config == nil {
@@ -210,9 +211,7 @@ func (cc *Client) Write(msgType int, message []byte) error {
 	}
 
 	if cc.status == Connected {
-
 		cc.toWrite <- &Message{MsgType: msgType, Data: message}
-
 	} else {
 		return errors.New(cc.status.String())
 	}

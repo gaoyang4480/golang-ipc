@@ -13,13 +13,13 @@ import (
 // Server create a unix socket and start listening connections - for unix and linux
 func (sc *Server) run() error {
 
-	base := "./tmp/"
+	base := "/tmp/"
 	sock := ".sock"
 
-	err := CreateDirIfNotExists(base)
-	if err != nil {
-		return err
-	}
+	//err := CreateDirIfNotExists(base)
+	//if err != nil {
+	//	return err
+	//}
 
 	if err := os.RemoveAll(base + sc.name + sock); err != nil {
 		return err
@@ -50,13 +50,13 @@ func (sc *Server) run() error {
 // Client connect to the unix socket created by the server -  for unix and linux
 func (cc *Client) dial() error {
 
-	base := "./tmp/"
+	base := "/tmp/"
 	sock := ".sock"
 
-	err := CreateDirIfNotExists(base)
-	if err != nil {
-		return err
-	}
+	//err := CreateDirIfNotExists(base)
+	//if err != nil {
+	//	return err
+	//}
 
 	startTime := time.Now()
 
